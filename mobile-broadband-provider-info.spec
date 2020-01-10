@@ -3,7 +3,7 @@
 Summary: Mobile broadband provider database
 Name: mobile-broadband-provider-info
 Version: 1.%{upstream_version}
-Release: 2%{?dist}
+Release: 4%{?dist}
 #
 # Source from git://git.gnome.org/mobile-broadband-provider-info
 # tarball built with:
@@ -14,6 +14,7 @@ Source: mobile-broadband-provider-info-%{upstream_version}.tar.bz2
 License: Public Domain
 Group: System Environment/Base
 Patch1: rh844288-sonera-update.patch
+Patch2: rh996599-typo-in-apn-israel-pelephone.patch
 
 BuildArch: noarch
 URL: http://live.gnome.org/NetworkManager/MobileBroadband/ServiceProviders
@@ -37,6 +38,7 @@ developing developing applications that use %{name}.
 %setup -q -n %{name}-%{upstream_version}
 
 %patch1 -p1 -b .sonera-update
+%patch2 -p1 -b .typo-in-apn-israel-pelephone
 
 %build
 %configure
@@ -63,6 +65,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/pkgconfig/%{name}.pc
 
 %changelog
+* Mon Jun  9 2014 Thomas Haller <thaller@redhat.com> - 1.20100122-4
+- rebuild for rhel-6.6.0 fast
+
+* Tue Aug 13 2013 Thomas Haller <thaller@redhat.com> - 1.20100122-3
+- Update Pelephone (Israel) (rh #996599)
+
 * Fri Jun 14 2013 Jiří Klimeš <jklimes@redhat.com> - 1.20100122-2
 - Update Sonera (Finland) data (rh #844288)
 
@@ -96,7 +104,7 @@ rm -rf $RPM_BUILD_ROOT
 - Spain
 - Moldova
 
-* Tue Jun 3 2009 Dan Williams <dcbw@redhat.com> 0.20090602-2
+* Wed Jun 3 2009 Dan Williams <dcbw@redhat.com> 0.20090602-2
 - Package review fixes
 
 * Tue Jun 2 2009 Dan Williams <dcbw@redhat.com> 0.20090602-1
