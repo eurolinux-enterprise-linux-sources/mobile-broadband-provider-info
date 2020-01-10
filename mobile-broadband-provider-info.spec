@@ -3,7 +3,7 @@
 Summary: Mobile broadband provider database
 Name: mobile-broadband-provider-info
 Version: 1.%{upstream_version}
-Release: 3%{?dist}
+Release: 4%{?dist}
 #
 # Source from git://git.gnome.org/mobile-broadband-provider-info
 # tarball built with:
@@ -62,6 +62,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/pkgconfig/%{name}.pc
 
 %changelog
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 1.20120614-4
+- Mass rebuild 2013-12-27
+
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.20120614-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
