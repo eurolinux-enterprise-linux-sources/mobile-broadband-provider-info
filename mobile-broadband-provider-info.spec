@@ -3,7 +3,7 @@
 Summary: Mobile broadband provider database
 Name: mobile-broadband-provider-info
 Version: 1.%{upstream_version}
-Release: 1%{?dist}
+Release: 2%{?dist}
 #
 # Source from git://git.gnome.org/mobile-broadband-provider-info
 # tarball built with:
@@ -13,6 +13,7 @@ Release: 1%{?dist}
 Source: mobile-broadband-provider-info-%{upstream_version}.tar.bz2
 License: Public Domain
 Group: System Environment/Base
+Patch1: rh844288-sonera-update.patch
 
 BuildArch: noarch
 URL: http://live.gnome.org/NetworkManager/MobileBroadband/ServiceProviders
@@ -34,6 +35,8 @@ developing developing applications that use %{name}.
 
 %prep
 %setup -q -n %{name}-%{upstream_version}
+
+%patch1 -p1 -b .sonera-update
 
 %build
 %configure
@@ -60,6 +63,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/pkgconfig/%{name}.pc
 
 %changelog
+* Fri Jun 14 2013 Jiří Klimeš <jklimes@redhat.com> - 1.20100122-2
+- Update Sonera (Finland) data (rh #844288)
+
 * Fri Jan 22 2010 Dan Williams <dcbw@redhat.com> - 1.20100122-1
 - Update to latest upstream release including:
 - Cyprus, Austria, Ireland, Ukraine, Romainia, Cambodia (rh #530981), 
