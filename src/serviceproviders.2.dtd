@@ -13,12 +13,15 @@
 
 <!ELEMENT gsm (network-id*, msisdn-query*, voicemail*, balance-check*, balance-top-up*, apn*)>
 <!ELEMENT apn (plan*,
-               usage*,
+               usage?,
                name*,
                gateway?,
                username?,
                password?,
-               dns*)>
+               authentication?,
+               dns*,
+               mmsc?,
+               mmsproxy?)>
 <!ATTLIST apn value CDATA #REQUIRED>
 
 <!ELEMENT msisdn-query (ussd*, sms*)>
@@ -79,6 +82,10 @@
 <!ELEMENT password (#PCDATA)>
 <!-- password required for authentication when starting a packet data session -->
 
+<!ELEMENT authentication EMPTY>
+<!ATTLIST authentication method (chap|pap) #REQUIRED>
+<!-- method to use for authentication when starting a packet data session -->
+
 <!ELEMENT dns (#PCDATA)>
 <!-- Any static IPv4 DNS servers required for the provider; usually these are
      sent to the client automatically via PPP or PDP context negotiation and
@@ -95,7 +102,7 @@
 <!ATTLIST plan type (prepaid|postpaid) #REQUIRED>
 
 <!ELEMENT usage EMPTY>
-<!ATTLIST usage type (internet|mms|wap) #REQUIRED>
+<!ATTLIST usage type (internet|mms|wap|ia) #REQUIRED>
 
 <!ELEMENT cdma (name*,
                 username?,
@@ -110,4 +117,8 @@
 <!ELEMENT name (#PCDATA)>
 <!ATTLIST name xml:lang CDATA #IMPLIED>
 
+<!-- MMS proxy in HOST:PORT format -->
+<!ELEMENT mmsproxy (#PCDATA)>
 
+<!-- MMS Center URL -->
+<!ELEMENT mmsc (#PCDATA)>

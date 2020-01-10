@@ -1,18 +1,15 @@
-%define upstream_version 20120614
+%define upstream_version 20170310
 
 Summary: Mobile broadband provider database
 Name: mobile-broadband-provider-info
 Version: 1.%{upstream_version}
-Release: 4%{?dist}
-#
+Release: 1%{?dist}
 # Source from git://git.gnome.org/mobile-broadband-provider-info
 # tarball built with:
 #    ./autogen.sh --prefix=/usr
 #    make distcheck
-#
-# Upstream release:
-# http://ftp.gnome.org/pub/gnome/sources/mobile-broadband-provider-info/%{upstream_version}/mobile-broadband-provider-info-%{upstream_version}.tar.xz
-Source: mobile-broadband-provider-info-%{upstream_version}.tar.bz2
+
+Source: http://ftp.gnome.org/pub/gnome/sources/mobile-broadband-provider-info/%{upstream_version}/mobile-broadband-provider-info-%{upstream_version}.tar.xz
 License: Public Domain
 Group: System Environment/Base
 
@@ -62,6 +59,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/pkgconfig/%{name}.pc
 
 %changelog
+* Mon Mar 13 2017 Beniamino Galvani <bgalvani@redhat.com> - 1.20170310-1
+- Update to latest upstream release 20170310
+
 * Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 1.20120614-4
 - Mass rebuild 2013-12-27
 
@@ -133,7 +133,7 @@ rm -rf $RPM_BUILD_ROOT
 - Spain
 - Moldova
 
-* Tue Jun 3 2009 Dan Williams <dcbw@redhat.com> 0.20090602-2
+* Wed Jun 3 2009 Dan Williams <dcbw@redhat.com> 0.20090602-2
 - Package review fixes
 
 * Tue Jun 2 2009 Dan Williams <dcbw@redhat.com> 0.20090602-1
